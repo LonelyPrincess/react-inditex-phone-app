@@ -2,6 +2,10 @@
   "name": "react-inditex-phone-app",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Sara Hernández Suárez",
+    "email": "sara.her.su@gmail.com"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^4.2.4",
