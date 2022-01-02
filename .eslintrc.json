@@ -19,5 +19,16 @@
     "react",
     "cypress"
   ],
-  "rules": {}
+  "rules": {
+    "import/prefer-default-export": "warn",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "state"
+        ]
+      }
+    ]
+  }
 }
