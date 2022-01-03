@@ -1,0 +1,76 @@
+{
+  "id": "q7dTIKOZuH9JA6CI_Ra6e",
+  "brand": "Acer",
+  "model": "Allegro",
+  "price": "140",
+  "imgUrl": "https://front-test-api.herokuapp.com/images/q7dTIKOZuH9JA6CI_Ra6e.jpg",
+  "networkTechnology": "GSM / HSPA",
+  "networkSpeed": "HSPA",
+  "gprs": "Yes",
+  "edge": "Yes",
+  "announced": "2011  October",
+  "status": "Available. Released 2011  November",
+  "dimentions": "116 x 59 x 13 mm (4.57 x 2.32 x 0.51 in)",
+  "weight": "126",
+  "sim": "Mini-SIM",
+  "displayType": "TFT capacitive touchscreen  16M colors",
+  "displayResolution": "3.6 inches (~53.9% screen-to-body ratio)",
+  "displaySize": "480 x 800 pixels (~259 ppi pixel density)",
+  "os": "Microsoft Windows Phone 7.5 Mango",
+  "cpu": "1.0 GHz Scorpion",
+  "chipset": "Qualcomm MSM8255 Snapdragon S2",
+  "gpu": "Adreno 205",
+  "externalMemory": "No",
+  "internalMemory": [
+    "8 GB"
+  ],
+  "ram": "",
+  "primaryCamera": [
+    "5 MP",
+    "autofocus"
+  ],
+  "secondaryCmera": "No",
+  "speaker": "Yes",
+  "audioJack": "Yes",
+  "wlan": [
+    "Wi-Fi 802.11 b/g/n",
+    "DLNA"
+  ],
+  "bluetooth": [
+    "2.1",
+    "A2DP",
+    "EDR"
+  ],
+  "gps": "Yes with A-GPS",
+  "nfc": "",
+  "radio": "No",
+  "usb": "microUSB 2.0",
+  "sensors": [
+    "Accelerometer",
+    "proximity",
+    "compass"
+  ],
+  "battery": "Removable Li-Ion 1300 mAh battery",
+  "colors": [
+    "Black",
+    "White"
+  ],
+  "options": {
+    "colors": [
+      {
+        "code": 1000,
+        "name": "Black"
+      },
+      {
+        "code": 1001,
+        "name": "White"
+      }
+    ],
+    "storages": [
+      {
+        "code": 2000,
+        "name": "8 GB"
+      }
+    ]
+  }
+}
