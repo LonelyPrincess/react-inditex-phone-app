@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -28,11 +28,25 @@ const ProductDetails = () => {
   const isLoading = useSelector(selectLoading);
   const product = useSelector(selectProductDetails);
 
+  const [productFormValues, setProductFormValues] = useState({});
+
   useEffect(() => {
     if (!product || product.id !== productId) {
       dispatch(fetchProductDetails(productId));
     }
   }, [productId]);
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+
+    // Initialize form values with first options in the list
+    setProductFormValues({
+      color: product.options.colors[0].code,
+      storage: product.options.storages[0].code,
+    });
+  }, [product]);
 
   if (isLoading) {
     return (
@@ -51,6 +65,14 @@ const ProductDetails = () => {
     );
   }
 
+  const addProductToCart = () => {
+    console.log({
+      id: productId,
+      colorCode: productFormValues.color,
+      storageCode: productFormValues.storage,
+    });
+  };
+
   const productName = `${product.brand} ${product.model}`;
   return (
     <>
@@ -66,7 +88,13 @@ const ProductDetails = () => {
             <Form>
               <Form.Group controlId="productForm.colorSelector">
                 <Form.Label>Color</Form.Label>
-                <Form.Select>
+                <Form.Select
+                  value={productFormValues.color}
+                  onChange={(event) => setProductFormValues({
+                    ...productFormValues,
+                    color: +event.target.value,
+                  })}
+                >
                   {product.options.colors.map((color) => (
                     <option key={color.code} value={color.code}>{color.name}</option>
                   ))}
@@ -74,14 +102,20 @@ const ProductDetails = () => {
               </Form.Group>
               <Form.Group controlId="productForm.storageSelector">
                 <Form.Label>Storage</Form.Label>
-                <Form.Select>
+                <Form.Select
+                  value={productFormValues.storage}
+                  onChange={(event) => setProductFormValues({
+                    ...productFormValues,
+                    storage: +event.target.value,
+                  })}
+                >
                   {product.options.storages.map((storage) => (
                     <option key={storage.code} value={storage.code}>{storage.name}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
             </Form>
-            <StyledBuyButton variant="primary" size="lg">
+            <StyledBuyButton variant="primary" size="lg" onClick={addProductToCart}>
               <FontAwesomeIcon icon={faCartPlus} />
               Add to cart
             </StyledBuyButton>
