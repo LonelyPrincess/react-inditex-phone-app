@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -10,6 +9,8 @@ import {
   fetchProductList,
   selectProductList,
 } from '../../state/productSlice';
+
+import Loader from '../../components/Loader/Loader';
 
 import {
   StyledProductList,
@@ -45,10 +46,10 @@ const ProductList = () => {
 
   if (isLoading) {
     return (
-      <>
-        <FontAwesomeIcon icon={faMobileAlt} size="6x" spin />
-        <p>Loading products...</p>
-      </>
+      <Loader
+        icon={faMobileAlt}
+        message="Loading products..."
+      />
     );
   }
 
