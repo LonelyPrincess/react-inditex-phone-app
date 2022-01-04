@@ -17,7 +17,10 @@ const Loader = ({ icon, message }) => (
 );
 
 Loader.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+  ]),
   message: PropTypes.string,
 };
 
