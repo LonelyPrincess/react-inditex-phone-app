@@ -53,6 +53,7 @@ const ProductList = () => {
   return (
     <>
       <Form.Control
+        data-cy="product-search-box"
         size="lg"
         type="search"
         placeholder="Enter the text to search"
