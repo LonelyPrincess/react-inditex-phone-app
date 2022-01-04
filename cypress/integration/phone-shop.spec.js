@@ -17,5 +17,8 @@ context('Phone list page', () => {
 
     cy.get('[data-cy=product-search-box]').type('Alcatel');
     cy.get('[data-cy=product-list-item]').should('have.length', 1);
+
+    cy.get('[data-cy=product-search-box]').clear();
+    cy.get('[data-cy=product-list-item]').should('have.length', 100);
   });
 });
