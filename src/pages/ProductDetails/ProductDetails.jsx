@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  Row, Col, Table, Form,
-} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Row, Col, Table } from 'react-bootstrap';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {
   fetchProductDetails,
@@ -15,11 +12,11 @@ import {
 } from '../../state/productSlice';
 
 import Loader from '../../components/Loader/Loader';
+import PurchaseForm from './components/PurchaseForm/PurchaseForm';
 
 import {
   StyledLeftCol,
   StyledPriceTag,
-  StyledBuyButton,
 } from './ProductDetails.styled';
 
 const ProductDetails = () => {
@@ -28,25 +25,11 @@ const ProductDetails = () => {
   const isLoading = useSelector(selectLoading);
   const product = useSelector(selectProductDetails);
 
-  const [productFormValues, setProductFormValues] = useState({});
-
   useEffect(() => {
     if (!product || product.id !== productId) {
       dispatch(fetchProductDetails(productId));
     }
   }, [productId]);
-
-  useEffect(() => {
-    if (!product) {
-      return;
-    }
-
-    // Initialize form values with first options in the list
-    setProductFormValues({
-      color: product.options.colors[0].code,
-      storage: product.options.storages[0].code,
-    });
-  }, [product]);
 
   if (isLoading) {
     return (
@@ -65,14 +48,6 @@ const ProductDetails = () => {
     );
   }
 
-  const addProductToCart = () => {
-    console.log({
-      id: productId,
-      colorCode: productFormValues.color,
-      storageCode: productFormValues.storage,
-    });
-  };
-
   const productName = `${product.brand} ${product.model}`;
   return (
     <>
@@ -84,42 +59,7 @@ const ProductDetails = () => {
             {product.price || '?'}
             €
           </StyledPriceTag>
-          <section>
-            <Form>
-              <Form.Group controlId="productForm.colorSelector">
-                <Form.Label>Color</Form.Label>
-                <Form.Select
-                  value={productFormValues.color}
-                  onChange={(event) => setProductFormValues({
-                    ...productFormValues,
-                    color: +event.target.value,
-                  })}
-                >
-                  {product.options.colors.map((color) => (
-                    <option key={color.code} value={color.code}>{color.name}</option>
-                  ))}
-                </Form.Select>
-              </Form.Group>
-              <Form.Group controlId="productForm.storageSelector">
-                <Form.Label>Storage</Form.Label>
-                <Form.Select
-                  value={productFormValues.storage}
-                  onChange={(event) => setProductFormValues({
-                    ...productFormValues,
-                    storage: +event.target.value,
-                  })}
-                >
-                  {product.options.storages.map((storage) => (
-                    <option key={storage.code} value={storage.code}>{storage.name}</option>
-                  ))}
-                </Form.Select>
-              </Form.Group>
-            </Form>
-            <StyledBuyButton variant="primary" size="lg" onClick={addProductToCart}>
-              <FontAwesomeIcon icon={faCartPlus} />
-              Add to cart
-            </StyledBuyButton>
-          </section>
+          <PurchaseForm product={product} />
         </StyledLeftCol>
         <Col>
           <Table bordered>
