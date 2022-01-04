@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Row, Col } from 'react-bootstrap';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -16,10 +17,10 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
-  const productDetails = useSelector(selectProductDetails);
+  const product = useSelector(selectProductDetails);
 
   useEffect(() => {
-    if (!productDetails || productDetails.id !== productId) {
+    if (!product || product.id !== productId) {
       dispatch(fetchProductDetails(productId));
     }
   }, [productId]);
@@ -33,11 +34,27 @@ const ProductDetails = () => {
     );
   }
 
-  return !productDetails ? null : (
-    <div>
-      TODO: info on product
-      {productDetails.id}
-    </div>
+  if (!product) {
+    return (
+      <h1 data-cy="product-not-found-message">
+        Product not found
+      </h1>
+    );
+  }
+
+  const productName = `${product.brand} ${product.model}`;
+  return (
+    <>
+      <h1>{productName}</h1>
+      <Row>
+        <Col>
+          <img alt={productName} src={product.imgUrl} />
+        </Col>
+        <Col>
+          hehe
+        </Col>
+      </Row>
+    </>
   );
 };
 
