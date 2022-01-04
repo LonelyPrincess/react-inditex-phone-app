@@ -41,12 +41,20 @@ export const productSlice = createSlice({
         state.loading = false;
         state.productList = action.payload;
       })
+      .addCase(fetchProductList.rejected, (state) => {
+        state.loading = false;
+        state.productList = [];
+      })
       .addCase(fetchProductDetails.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.productDetails = action.payload;
+      })
+      .addCase(fetchProductDetails.rejected, (state) => {
+        state.loading = false;
+        state.productDetails = null;
       });
   },
 });
