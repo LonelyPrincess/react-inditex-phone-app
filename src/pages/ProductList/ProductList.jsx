@@ -22,7 +22,7 @@ const ProductList = () => {
   const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState();
-  // const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     console.log('Fetching list of products...');
@@ -30,8 +30,16 @@ const ProductList = () => {
   }, []);
 
   useEffect(() => {
-    // setFilteredProducts();
-  }, [searchTerm]);
+    if (!searchTerm) {
+      setFilteredProducts(productList);
+    } else {
+      setFilteredProducts(productList.filter((product) => {
+        const productName = `${product.brand} ${product.model}`;
+        return productName.toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      }));
+    }
+  }, [productList, searchTerm]);
 
   if (isLoading) {
     return (
@@ -45,13 +53,18 @@ const ProductList = () => {
   return (
     <>
       <Form.Control
-        size="sm"
+        size="lg"
         type="search"
         placeholder="Enter the text to search"
         onChange={(event) => setSearchTerm(event.target.value)}
       />
+      {searchTerm && (
+        <p>
+          {`${filteredProducts.length} out of ${productList.length} found for "${searchTerm}"`}
+        </p>
+      )}
       <StyledProductList>
-        {productList.map((product) => (
+        {filteredProducts.map((product) => (
           <StyledProductListItem key={product.id} data-cy="product-list-item">
             <img
               alt={`${product.brand} ${product.model}`}
