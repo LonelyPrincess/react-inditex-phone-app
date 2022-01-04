@@ -10,6 +10,11 @@ import {
   selectProductList,
 } from '../../state/productSlice';
 
+import {
+  StyledProductList,
+  StyledProductListItem,
+} from './ProductList.styled';
+
 const ProductList = () => {
   const productList = useSelector(selectProductList);
   const isLoading = useSelector(selectLoading);
@@ -44,13 +49,17 @@ const ProductList = () => {
         placeholder="Enter the text to search"
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-      <ul>
+      <StyledProductList>
         {productList.map((product) => (
-          <li key={product.id} data-cy="product-list-item">
-            {product.model}
-          </li>
+          <StyledProductListItem key={product.id} data-cy="product-list-item">
+            <img
+              alt={`${product.brand} ${product.model}`}
+              src={product.imgUrl}
+            />
+            <span>{`${product.brand} ${product.model}`}</span>
+          </StyledProductListItem>
         ))}
-      </ul>
+      </StyledProductList>
     </>
   );
 };
