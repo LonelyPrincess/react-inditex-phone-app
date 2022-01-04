@@ -38,6 +38,23 @@ context('Phone list page', () => {
       .first()
       .click();
 
-    cy.url().should('match', new RegExp('/products/q7dTIKOZuH9JA6CI_Ra6e'));
+    cy.url().should('match', /\/products\/q7dTIKOZuH9JA6CI_Ra6e/);
+  });
+
+  it('should display error message if product does not exist', () => {
+    cy.wait('@getProductListRequest');
+
+    cy.intercept({
+      method: 'GET',
+      url: `${Cypress.env('API_BASE_PATH')}/products/fake-product-id`,
+    }, {
+      statusCode: 404,
+    }).as('getProductDetailsRequest');
+
+    cy.visit('/products/fake-product-id');
+
+    cy.wait('@getProductDetailsRequest');
+
+    cy.get('[data-cy=product-not-found-message]').should('be.visible');
   });
 });
