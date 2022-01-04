@@ -22,4 +22,14 @@ export const StyledProductListItem = styled.li`
   align-items: center;
   justify-content: center;
   border-radius: .25rem;
+  position: relative;
+`;
+
+export const StyledProductListItemPrice = styled.div`
+  padding: .3rem 1rem;
+  color: #ffffff;
+  background: #0d6efd;
+  position: absolute;
+  top: 0;
+  right: 0;
 `;

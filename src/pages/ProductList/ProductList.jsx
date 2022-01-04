@@ -13,6 +13,7 @@ import {
 import {
   StyledProductList,
   StyledProductListItem,
+  StyledProductListItemPrice,
 } from './ProductList.styled';
 
 const ProductList = () => {
@@ -57,6 +58,9 @@ const ProductList = () => {
               src={product.imgUrl}
             />
             <span>{`${product.brand} ${product.model}`}</span>
+            <StyledProductListItemPrice>
+              {`${product.price || '?'} €`}
+            </StyledProductListItemPrice>
           </StyledProductListItem>
         ))}
       </StyledProductList>
