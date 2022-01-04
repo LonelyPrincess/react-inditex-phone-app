@@ -21,4 +21,23 @@ context('Phone list page', () => {
     cy.get('[data-cy=product-search-box]').clear();
     cy.get('[data-cy=product-list-item]').should('have.length', 100);
   });
+
+  it('should be able to navigate to details', () => {
+    cy.wait('@getProductListRequest');
+
+    cy.intercept({
+      method: 'GET',
+      url: `${Cypress.env('API_BASE_PATH')}/products/q7dTIKOZuH9JA6CI_Ra6e`,
+    }, {
+      delay: 2000,
+      fixture: 'get-product-details.json',
+    }).as('getProductDetails');
+
+    cy.get('[data-cy=product-search-box]').type('Allegro');
+    cy.get('[data-cy=product-list-item]')
+      .first()
+      .click();
+
+    cy.url().should('match', new RegExp('/products/q7dTIKOZuH9JA6CI_Ra6e'));
+  });
 });
