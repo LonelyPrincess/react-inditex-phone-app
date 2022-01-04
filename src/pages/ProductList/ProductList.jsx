@@ -1,13 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  selectLoading,
+  fetchProductList,
+  selectProductList,
+} from '../../state/productSlice';
 
 const ProductList = () => {
+  const productList = useSelector(selectProductList);
+  const isLoading = useSelector(selectLoading);
+  const dispatch = useDispatch();
+
   const [searchTerm, setSearchTerm] = useState();
   // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    console.log('Fetching list of products...');
+    dispatch(fetchProductList());
+  }, []);
+
+  useEffect(() => {
     // setFilteredProducts();
   }, [searchTerm]);
+
+  if (isLoading) {
+    return (
+      <>
+        <FontAwesomeIcon icon={faMobileAlt} size="6x" spin />
+        <p>Loading products...</p>
+      </>
+    );
+  }
 
   return (
     <>
@@ -17,9 +44,13 @@ const ProductList = () => {
         placeholder="Enter the text to search"
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-      <div>
-        todo: add list
-      </div>
+      <ul>
+        {productList.map((product) => (
+          <li key={product.id} data-cy="product-list-item">
+            {product.model}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

@@ -52,7 +52,7 @@ export const productSlice = createSlice({
 });
 
 // Selector functions to read state contents
-export const isLoading = (state) => state.product.loading;
+export const selectLoading = (state) => state.product.loading;
 export const selectProductList = (state) => state.product.productList;
 export const selectProductDetails = (state) => state.product.productDetails;
 
