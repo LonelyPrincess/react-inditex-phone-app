@@ -10,14 +10,17 @@ const ProductList = () => {
   }, [searchTerm]);
 
   return (
-    <main>
+    <>
       <Form.Control
         size="sm"
         type="search"
         placeholder="Enter the text to search"
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-    </main>
+      <div>
+        todo: add list
+      </div>
+    </>
   );
 };
 
