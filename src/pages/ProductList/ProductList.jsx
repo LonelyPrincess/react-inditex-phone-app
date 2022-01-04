@@ -28,7 +28,6 @@ const ProductList = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    console.log('Fetching list of products...');
     dispatch(fetchProductList());
   }, []);
 
