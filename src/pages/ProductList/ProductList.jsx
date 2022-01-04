@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,7 @@ import {
 } from './ProductList.styled';
 
 const ProductList = () => {
+  const navigate = useNavigate();
   const productList = useSelector(selectProductList);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
@@ -66,7 +68,11 @@ const ProductList = () => {
       )}
       <StyledProductList>
         {filteredProducts.map((product) => (
-          <StyledProductListItem key={product.id} data-cy="product-list-item">
+          <StyledProductListItem
+            key={product.id}
+            data-cy="product-list-item"
+            onClick={() => navigate(`/products/${product.id}`)}
+          >
             <img
               alt={`${product.brand} ${product.model}`}
               src={product.imgUrl}
