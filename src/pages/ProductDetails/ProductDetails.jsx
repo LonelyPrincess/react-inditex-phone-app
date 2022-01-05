@@ -56,11 +56,21 @@ const ProductDetails = () => {
   return (
     <>
       <Breadcrumb>
-        <Breadcrumb.Item linkProps={{ to: '/' }} linkAs={Link}>Home</Breadcrumb.Item>
-        <Breadcrumb.Item active>Product details</Breadcrumb.Item>
+        <Breadcrumb.Item
+          data-cy="breadcrumb-home-link"
+          linkProps={{ to: '/' }}
+          linkAs={Link}
+        >
+          Home
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>
+          Product details
+        </Breadcrumb.Item>
       </Breadcrumb>
       <StyledMain>
-        <StyledTitle>{productName}</StyledTitle>
+        <StyledTitle data-cy="product-name">
+          {productName}
+        </StyledTitle>
         <Row>
           <StyledLeftCol md={3}>
             <img alt={productName} src={product.imgUrl} />

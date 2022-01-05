@@ -6,6 +6,7 @@ import { StyledPriceTag } from './PriceTag.styled';
 const PriceTag = ({ className, value }) => (
   <StyledPriceTag
     className={className}
+    data-cy="price-tag"
     price={+value}
   >
     {`${value || '-'} €`}
