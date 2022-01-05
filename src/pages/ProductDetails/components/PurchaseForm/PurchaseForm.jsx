@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
+import { Formik, Form as FormikForm, Field } from 'formik';
 import { Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,68 +11,60 @@ import {
 } from './PurchaseForm.styled';
 
 const PurchaseForm = ({ product }) => {
-  const [productFormValues, setProductFormValues] = useState({});
+  // Initialize form values with first options in the list
+  const initialFormValues = useMemo(() => ({
+    color: product?.options.colors[0].code,
+    storage: product?.options.storages[0].code,
+  }), [product]);
 
-  useEffect(() => {
-    if (!product) {
-      return;
-    }
-
-    // Initialize form values with first options in the list
-    setProductFormValues({
-      color: product.options.colors[0].code,
-      storage: product.options.storages[0].code,
-    });
-  }, [product]);
-
-  const addProductToCart = () => {
+  const addProductToCart = (values) => {
     console.log({
       id: product.id,
-      colorCode: productFormValues.color,
-      storageCode: productFormValues.storage,
+      colorCode: +values.color,
+      storageCode: +values.storage,
     });
   };
 
   return (
-    <Form>
-      <Form.Group controlId="productForm.colorSelector">
-        <Form.Label>Color</Form.Label>
-        <Form.Select
-          value={productFormValues.color}
-          onChange={(event) => setProductFormValues({
-            ...productFormValues,
-            color: +event.target.value,
-          })}
+    <Formik
+      initialValues={initialFormValues}
+      onSubmit={addProductToCart}
+    >
+      <FormikForm>
+        <Field name="color">
+          {({ field }) => (
+            <Form.Group controlId="purchaseForm.colorSelector">
+              <Form.Label>Color</Form.Label>
+              <Form.Select {...field}>
+                {product.options.colors.map((color) => (
+                  <option key={color.code} value={color.code}>{color.name}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          )}
+        </Field>
+        <Field name="storage">
+          {({ field }) => (
+            <Form.Group controlId="purchaseForm.storageSelector">
+              <Form.Label>Storage</Form.Label>
+              <Form.Select {...field}>
+                {product.options.storages.map((storage) => (
+                  <option key={storage.code} value={storage.code}>{storage.name}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          )}
+        </Field>
+        <StyledBuyButton
+          variant="primary"
+          size="lg"
+          type="submit"
         >
-          {product.options.colors.map((color) => (
-            <option key={color.code} value={color.code}>{color.name}</option>
-          ))}
-        </Form.Select>
-      </Form.Group>
-      <Form.Group controlId="productForm.storageSelector">
-        <Form.Label>Storage</Form.Label>
-        <Form.Select
-          value={productFormValues.storage}
-          onChange={(event) => setProductFormValues({
-            ...productFormValues,
-            storage: +event.target.value,
-          })}
-        >
-          {product.options.storages.map((storage) => (
-            <option key={storage.code} value={storage.code}>{storage.name}</option>
-          ))}
-        </Form.Select>
-      </Form.Group>
-      <StyledBuyButton
-        variant="primary"
-        size="lg"
-        type="submit"
-        onClick={addProductToCart}
-      >
-        <FontAwesomeIcon icon={faCartPlus} />
-        Add to cart
-      </StyledBuyButton>
-    </Form>
+          <FontAwesomeIcon icon={faCartPlus} />
+          Add to cart
+        </StyledBuyButton>
+      </FormikForm>
+    </Formik>
   );
 };
 
