@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,16 +12,14 @@ import {
 } from '../../state/productSlice';
 
 import Loader from '../../components/Loader/Loader';
+import ProductListItem from './components/ProductListItem/ProductListItem';
 
 import {
   StyledProductList,
-  StyledProductListItem,
-  StyledProductListItemPrice,
   StyledProductCount,
 } from './ProductList.styled';
 
 const ProductList = () => {
-  const navigate = useNavigate();
   const productList = useSelector(selectProductList);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
@@ -88,20 +85,10 @@ const ProductList = () => {
       )}
       <StyledProductList>
         {filteredProducts.map((product) => (
-          <StyledProductListItem
+          <ProductListItem
             key={product.id}
-            data-cy="product-list-item"
-            onClick={() => navigate(`/products/${product.id}`)}
-          >
-            <img
-              alt={`${product.brand} ${product.model}`}
-              src={product.imgUrl}
-            />
-            <span>{`${product.brand} ${product.model}`}</span>
-            <StyledProductListItemPrice>
-              {`${product.price || '?'} €`}
-            </StyledProductListItemPrice>
-          </StyledProductListItem>
+            product={product}
+          />
         ))}
       </StyledProductList>
     </>
