@@ -27,13 +27,13 @@ const PurchaseForm = ({ product }) => {
   }), [product]);
 
   const addProductToCart = (values) => {
-    console.log({
-      id: product.id,
-      colorCode: +values.color,
-      storageCode: +values.storage,
-    });
-
-    dispatch(addProductToCartAction(product.id, +values.color, +values.storage));
+    dispatch(
+      addProductToCartAction({
+        productId: product.id,
+        colorCode: +values.color,
+        storageCode: +values.storage,
+      }),
+    );
   };
 
   return (

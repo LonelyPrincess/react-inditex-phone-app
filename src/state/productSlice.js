@@ -35,13 +35,13 @@ export const fetchProductDetails = createAsyncThunk(
  */
 export const addProductToCart = createAsyncThunk(
   'product/addProductToCart',
-  (productId, colorCode, storageCode) => requestJson(`${apiBaseUrl}/cart`, {
+  ({ productId, colorCode, storageCode }) => requestJson(`${apiBaseUrl}/cart`, {
     method: 'post',
-    body: {
+    body: JSON.stringify({
       id: productId,
       colorCode,
       storageCode,
-    },
+    }),
   }),
 );
 
