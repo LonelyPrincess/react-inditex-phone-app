@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import {
+  StyledPriceTag,
   StyledProductListItem,
-  StyledProductListItemPrice,
 } from './ProductListItem.styled';
 
 const ProductListItem = ({ product }) => {
@@ -23,9 +23,7 @@ const ProductListItem = ({ product }) => {
         src={product.imgUrl}
       />
       <span>{productName}</span>
-      <StyledProductListItemPrice>
-        {`${product.price || '?'} €`}
-      </StyledProductListItemPrice>
+      <StyledPriceTag value={product.price} />
     </StyledProductListItem>
   );
 };

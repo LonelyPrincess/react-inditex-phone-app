@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import PriceTag from '../../../../components/PriceTag/PriceTag';
+
 export const StyledProductListItem = styled.li`
   flex-basis: 20%;
   border: 1px solid #ced4da;
@@ -14,10 +16,7 @@ export const StyledProductListItem = styled.li`
   text-align: center;
 `;
 
-export const StyledProductListItemPrice = styled.div`
-  padding: .3rem 1rem;
-  color: #ffffff;
-  background: #0d6efd;
+export const StyledPriceTag = styled(PriceTag)`
   position: absolute;
   top: 0;
   right: 0;

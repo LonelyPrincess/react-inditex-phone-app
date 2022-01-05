@@ -64,10 +64,7 @@ const ProductDetails = () => {
         <Row>
           <StyledLeftCol md={3}>
             <img alt={productName} src={product.imgUrl} />
-            <StyledPriceTag>
-              {product.price || '?'}
-              €
-            </StyledPriceTag>
+            <StyledPriceTag value={product.price} />
             <PurchaseForm product={product} />
           </StyledLeftCol>
           <Col>

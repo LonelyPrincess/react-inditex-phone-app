@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { Button, Col } from 'react-bootstrap';
 
+import PriceTag from '../../components/PriceTag/PriceTag';
+
 export const StyledMain = styled.main`
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0;
 `;
 
 export const StyledTitle = styled.h1`
@@ -14,15 +16,15 @@ export const StyledLeftCol = styled(Col)`
   flex-direction: column;
   row-gap: 1rem;
   position: relative;
+  padding: 1rem 0;
 `;
 
-export const StyledPriceTag = styled.div`
-  padding: .3rem 1rem;
-  color: #ffffff;
-  background: #0d6efd;
+export const StyledPriceTag = styled(PriceTag)`
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 2rem;
+  padding: .5rem 1.25rem;
 `;
 
 export const StyledBuyButton = styled(Button)`
