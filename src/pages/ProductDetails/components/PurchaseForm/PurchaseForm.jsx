@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Formik, Form as FormikForm, Field } from 'formik';
-import { Form } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faFillDrip, faSdCard } from '@fortawesome/free-solid-svg-icons';
 
 import {
   selectLoading,
@@ -46,11 +46,16 @@ const PurchaseForm = ({ product }) => {
           {({ field }) => (
             <Form.Group controlId="purchaseForm.colorSelector">
               <Form.Label>Color</Form.Label>
-              <Form.Select {...field}>
-                {product.options.colors.map((color) => (
-                  <option key={color.code} value={color.code}>{color.name}</option>
-                ))}
-              </Form.Select>
+              <InputGroup>
+                <InputGroup.Text>
+                  <FontAwesomeIcon fixedWidth icon={faFillDrip} />
+                </InputGroup.Text>
+                <Form.Select {...field}>
+                  {product.options.colors.map((color) => (
+                    <option key={color.code} value={color.code}>{color.name}</option>
+                  ))}
+                </Form.Select>
+              </InputGroup>
             </Form.Group>
           )}
         </Field>
@@ -58,11 +63,16 @@ const PurchaseForm = ({ product }) => {
           {({ field }) => (
             <Form.Group controlId="purchaseForm.storageSelector">
               <Form.Label>Storage</Form.Label>
-              <Form.Select {...field}>
-                {product.options.storages.map((storage) => (
-                  <option key={storage.code} value={storage.code}>{storage.name}</option>
-                ))}
-              </Form.Select>
+              <InputGroup>
+                <InputGroup.Text>
+                  <FontAwesomeIcon fixedWidth icon={faSdCard} />
+                </InputGroup.Text>
+                <Form.Select {...field}>
+                  {product.options.storages.map((storage) => (
+                    <option key={storage.code} value={storage.code}>{storage.name}</option>
+                  ))}
+                </Form.Select>
+              </InputGroup>
             </Form.Group>
           )}
         </Field>
