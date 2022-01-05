@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { Form } from 'react-bootstrap';
@@ -7,10 +8,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 import {
+  selectLoading,
+  addProductToCart as addProductToCartAction,
+} from '../../../../state/productSlice';
+
+import {
   StyledBuyButton,
 } from './PurchaseForm.styled';
 
 const PurchaseForm = ({ product }) => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectLoading);
+
   // Initialize form values with first options in the list
   const initialFormValues = useMemo(() => ({
     color: product?.options.colors[0].code,
@@ -23,6 +32,8 @@ const PurchaseForm = ({ product }) => {
       colorCode: +values.color,
       storageCode: +values.storage,
     });
+
+    dispatch(addProductToCartAction(product.id, +values.color, +values.storage));
   };
 
   return (
@@ -56,6 +67,7 @@ const PurchaseForm = ({ product }) => {
           )}
         </Field>
         <StyledBuyButton
+          disabled={isLoading}
           variant="primary"
           size="lg"
           type="submit"
