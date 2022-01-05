@@ -29,6 +29,22 @@ export const fetchProductDetails = createAsyncThunk(
   (productId) => requestJson(`${apiBaseUrl}/products/${productId}`),
 );
 
+/**
+ * Async action to add an item to the shopping cart.
+ * @returns {Promise} Promise object with number of items in cart.
+ */
+export const addProductToCart = createAsyncThunk(
+  'product/addProductToCart',
+  (productId, colorCode, storageCode) => requestJson(`${apiBaseUrl}/cart`, {
+    method: 'post',
+    body: {
+      id: productId,
+      colorCode,
+      storageCode,
+    },
+  }),
+);
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -56,6 +72,16 @@ export const productSlice = createSlice({
       .addCase(fetchProductDetails.rejected, (state) => {
         state.loading = false;
         state.productDetails = null;
+      })
+      .addCase(addProductToCart.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addProductToCart.fulfilled, (state, action) => {
+        state.loading = false;
+        state.shoppingCartItemCount = action.payload.count;
+      })
+      .addCase(addProductToCart.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
