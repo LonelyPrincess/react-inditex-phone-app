@@ -35,7 +35,7 @@ const ProductDetails = () => {
     }
   }, [productId]);
 
-  if (isLoading) {
+  if (isLoading && (!product || product.id !== productId)) {
     return (
       <Loader
         icon={faMobileAlt}
