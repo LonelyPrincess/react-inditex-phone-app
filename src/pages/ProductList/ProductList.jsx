@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Form, InputGroup } from 'react-bootstrap';
+import { Breadcrumb, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -54,43 +54,48 @@ const ProductList = () => {
 
   return (
     <>
-      <InputGroup>
-        <InputGroup.Text>
-          <FontAwesomeIcon fixedWidth icon={faSearch} />
-        </InputGroup.Text>
-        <Form.Control
-          data-cy="product-search-box"
-          size="lg"
-          type="search"
-          placeholder="Enter the text to search"
-          onChange={(event) => setSearchTerm(event.target.value)}
-        />
-      </InputGroup>
-      {!searchTerm ? (
-        <StyledProductCount>
-          {'Found a total of '}
-          <span data-cy="all-products-count">{productList.length}</span>
-          {' products'}
-        </StyledProductCount>
-      ) : (
-        <StyledProductCount>
-          &quot;
-          <i data-cy="search-term">{searchTerm}</i>
-          {'" found in '}
-          <span data-cy="search-results-count">{filteredProducts.length}</span>
-          {' out of '}
-          <span data-cy="all-products-count">{productList.length}</span>
-          {' products'}
-        </StyledProductCount>
-      )}
-      <StyledProductList>
-        {filteredProducts.map((product) => (
-          <ProductListItem
-            key={product.id}
-            product={product}
+      <Breadcrumb>
+        <Breadcrumb.Item active>Home</Breadcrumb.Item>
+      </Breadcrumb>
+      <main>
+        <InputGroup>
+          <InputGroup.Text>
+            <FontAwesomeIcon fixedWidth icon={faSearch} />
+          </InputGroup.Text>
+          <Form.Control
+            data-cy="product-search-box"
+            size="lg"
+            type="search"
+            placeholder="Enter the text to search"
+            onChange={(event) => setSearchTerm(event.target.value)}
           />
-        ))}
-      </StyledProductList>
+        </InputGroup>
+        {!searchTerm ? (
+          <StyledProductCount>
+            {'Found a total of '}
+            <span data-cy="all-products-count">{productList.length}</span>
+            {' products'}
+          </StyledProductCount>
+        ) : (
+          <StyledProductCount>
+            &quot;
+            <i data-cy="search-term">{searchTerm}</i>
+            {'" found in '}
+            <span data-cy="search-results-count">{filteredProducts.length}</span>
+            {' out of '}
+            <span data-cy="all-products-count">{productList.length}</span>
+            {' products'}
+          </StyledProductCount>
+        )}
+        <StyledProductList>
+          {filteredProducts.map((product) => (
+            <ProductListItem
+              key={product.id}
+              product={product}
+            />
+          ))}
+        </StyledProductList>
+      </main>
     </>
   );
 };
