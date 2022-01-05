@@ -54,10 +54,10 @@ context('Phone list page', () => {
     cy.get('[data-cy=add-to-shopping-cart-button]').click();
 
     cy.wait('@addProductToCartRequest').then(({ request }) => {
-      expect(request.body).to.eq({
+      expect(request.body).to.eql({
         id: 'q7dTIKOZuH9JA6CI_Ra6e',
-        colorCode: 2000,
-        storageCode: 1000,
+        colorCode: 1000,
+        storageCode: 2000,
       });
     });
 
