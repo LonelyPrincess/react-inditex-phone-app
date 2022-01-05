@@ -14,6 +14,7 @@ import {
 
 import {
   StyledForm,
+  StyledLabel,
   StyledBuyButton,
 } from './PurchaseForm.styled';
 
@@ -46,7 +47,7 @@ const PurchaseForm = ({ product }) => {
         <Field name="color">
           {({ field }) => (
             <Form.Group controlId="purchaseForm.colorSelector">
-              <Form.Label>Color</Form.Label>
+              <StyledLabel>Color</StyledLabel>
               <InputGroup>
                 <InputGroup.Text>
                   <FontAwesomeIcon fixedWidth icon={faFillDrip} />
@@ -63,7 +64,7 @@ const PurchaseForm = ({ product }) => {
         <Field name="storage">
           {({ field }) => (
             <Form.Group controlId="purchaseForm.storageSelector">
-              <Form.Label>Storage</Form.Label>
+              <StyledLabel>Storage</StyledLabel>
               <InputGroup>
                 <InputGroup.Text>
                   <FontAwesomeIcon fixedWidth icon={faSdCard} />
