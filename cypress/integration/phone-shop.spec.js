@@ -39,6 +39,29 @@ context('Phone list page', () => {
       .click();
 
     cy.url().should('match', /\/products\/q7dTIKOZuH9JA6CI_Ra6e/);
+
+    // Check that user can add item to shopping cart
+    cy.intercept({
+      method: 'POST',
+      url: `${Cypress.env('API_BASE_PATH')}/cart`,
+    }, {
+      body: {
+        count: 1,
+      },
+    }).as('addProductToCartRequest');
+
+    cy.get('[data-cy=shopping-cart-item-count]').should('have.text', 0);
+    cy.get('[data-cy=add-to-shopping-cart-button]').click();
+
+    cy.wait('@addProductToCartRequest').then(({ request }) => {
+      expect(request.body).to.eq({
+        id: 'q7dTIKOZuH9JA6CI_Ra6e',
+        colorCode: 2000,
+        storageCode: 1000,
+      });
+    });
+
+    cy.get('[data-cy=shopping-cart-item-count]').should('have.text', 1);
   });
 
   it('should display error message if product does not exist', () => {

@@ -67,6 +67,7 @@ const PurchaseForm = ({ product }) => {
           )}
         </Field>
         <StyledBuyButton
+          data-cy="add-to-shopping-cart-button"
           disabled={isLoading}
           variant="primary"
           size="lg"
