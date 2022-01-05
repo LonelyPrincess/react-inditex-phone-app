@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
-import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+
+import { Form, InputGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMobileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import {
   selectLoading,
@@ -54,13 +56,18 @@ const ProductList = () => {
 
   return (
     <>
-      <Form.Control
-        data-cy="product-search-box"
-        size="lg"
-        type="search"
-        placeholder="Enter the text to search"
-        onChange={(event) => setSearchTerm(event.target.value)}
-      />
+      <InputGroup>
+        <InputGroup.Text>
+          <FontAwesomeIcon fixedWidth icon={faSearch} />
+        </InputGroup.Text>
+        <Form.Control
+          data-cy="product-search-box"
+          size="lg"
+          type="search"
+          placeholder="Enter the text to search"
+          onChange={(event) => setSearchTerm(event.target.value)}
+        />
+      </InputGroup>
       {searchTerm && (
         <p>
           {`${filteredProducts.length} out of ${productList.length} found for "${searchTerm}"`}
