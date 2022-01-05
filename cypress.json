@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
-  "integrationFolder": "cypress",
+  "integrationFolder": "cypress/integration",
   "env": {
     "API_BASE_PATH": "https://front-test-api.herokuapp.com/api"
   }
