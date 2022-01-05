@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Formik, Form as FormikForm, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faFillDrip, faSdCard } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +13,7 @@ import {
 } from '../../../../state/productSlice';
 
 import {
+  StyledForm,
   StyledBuyButton,
 } from './PurchaseForm.styled';
 
@@ -41,7 +42,7 @@ const PurchaseForm = ({ product }) => {
       initialValues={initialFormValues}
       onSubmit={addProductToCart}
     >
-      <FormikForm>
+      <StyledForm>
         <Field name="color">
           {({ field }) => (
             <Form.Group controlId="purchaseForm.colorSelector">
@@ -86,7 +87,7 @@ const PurchaseForm = ({ product }) => {
           <FontAwesomeIcon icon={faCartPlus} />
           Add to cart
         </StyledBuyButton>
-      </FormikForm>
+      </StyledForm>
     </Formik>
   );
 };
