@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -56,7 +56,7 @@ const ProductDetails = () => {
   return (
     <>
       <Breadcrumb>
-        <Breadcrumb.Item href="/products">Home</Breadcrumb.Item>
+        <Breadcrumb.Item linkProps={{ to: '/' }} linkAs={Link}>Home</Breadcrumb.Item>
         <Breadcrumb.Item active>Product details</Breadcrumb.Item>
       </Breadcrumb>
       <StyledMain>
