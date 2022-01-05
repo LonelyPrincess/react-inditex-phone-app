@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
+import {
+  StyledHeader,
+  StyledTitle,
+  StyledCartContainer,
+  StyledBadge,
+} from './Header.styled';
+
 const Header = () => (
-  <header>
-    <Row>
-      <Col>
-        <Link to="/">Mobile eShop</Link>
-      </Col>
-      <Col xs={2}>
-        <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-        <Badge pill bg="primary">2</Badge>
-      </Col>
-    </Row>
-  </header>
+  <StyledHeader>
+    <StyledTitle>
+      <Link to="/">Mobile eShop</Link>
+    </StyledTitle>
+    <StyledCartContainer>
+      <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+      <StyledBadge pill bg="primary">2</StyledBadge>
+    </StyledCartContainer>
+  </StyledHeader>
 );
 
 export default Header;

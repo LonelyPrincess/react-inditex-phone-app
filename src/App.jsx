@@ -7,9 +7,9 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 
 const App = () => (
-  <Container>
+  <>
     <Header />
-    <main>
+    <Container>
       <Routes>
         <Route
           path="/products"
@@ -24,8 +24,8 @@ const App = () => (
           element={<Navigate to="/products" />}
         />
       </Routes>
-    </main>
-  </Container>
+    </Container>
+  </>
 );
 
 export default App;
