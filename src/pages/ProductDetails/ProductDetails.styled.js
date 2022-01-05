@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import { Button, Col } from 'react-bootstrap';
 
+export const StyledMain = styled.main`
+  margin: 1rem 0 2rem 0;
+`;
+
+export const StyledTitle = styled.h1`
+  margin-bottom: 2rem;
+`;
+
 export const StyledLeftCol = styled(Col)`
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   position: relative;
-  padding: 1rem;
 `;
 
 export const StyledPriceTag = styled.div`

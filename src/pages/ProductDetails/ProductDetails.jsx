@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Row, Col, Table } from 'react-bootstrap';
+import {
+  Breadcrumb, Row, Col, Table,
+} from 'react-bootstrap';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -15,6 +17,8 @@ import Loader from '../../components/Loader/Loader';
 import PurchaseForm from './components/PurchaseForm/PurchaseForm';
 
 import {
+  StyledMain,
+  StyledTitle,
   StyledLeftCol,
   StyledPriceTag,
 } from './ProductDetails.styled';
@@ -51,72 +55,78 @@ const ProductDetails = () => {
   const productName = `${product.brand} ${product.model}`;
   return (
     <>
-      <h1>{productName}</h1>
-      <Row>
-        <StyledLeftCol md={3}>
-          <img alt={productName} src={product.imgUrl} />
-          <StyledPriceTag>
-            {product.price || '?'}
-            €
-          </StyledPriceTag>
-          <PurchaseForm product={product} />
-        </StyledLeftCol>
-        <Col>
-          <Table bordered>
-            <thead>
-              <tr>
-                <th colSpan={2}>Specifications</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Dimentions</td>
-                <td>{product.dimentions}</td>
-              </tr>
-              <tr>
-                <td>Weight</td>
-                <td>{product.weight}</td>
-              </tr>
-              <tr>
-                <td>Display type</td>
-                <td>{product.displayType}</td>
-              </tr>
-              <tr>
-                <td>Display size</td>
-                <td>{product.displaySize}</td>
-              </tr>
-              <tr>
-                <td>Display resolution</td>
-                <td>{product.displayResolution}</td>
-              </tr>
-              <tr>
-                <td>Operating system</td>
-                <td>{product.os}</td>
-              </tr>
-              <tr>
-                <td>CPU</td>
-                <td>{product.cpu}</td>
-              </tr>
-              <tr>
-                <td>Chipset</td>
-                <td>{product.chipset}</td>
-              </tr>
-              <tr>
-                <td>GPU</td>
-                <td>{product.gpu}</td>
-              </tr>
-              <tr>
-                <td>Speaker</td>
-                <td>{product.speaker}</td>
-              </tr>
-              <tr>
-                <td>Audio jack</td>
-                <td>{product.audioJack}</td>
-              </tr>
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
+      <Breadcrumb>
+        <Breadcrumb.Item href="/products">Home</Breadcrumb.Item>
+        <Breadcrumb.Item active>Product details</Breadcrumb.Item>
+      </Breadcrumb>
+      <StyledMain>
+        <StyledTitle>{productName}</StyledTitle>
+        <Row>
+          <StyledLeftCol md={3}>
+            <img alt={productName} src={product.imgUrl} />
+            <StyledPriceTag>
+              {product.price || '?'}
+              €
+            </StyledPriceTag>
+            <PurchaseForm product={product} />
+          </StyledLeftCol>
+          <Col>
+            <Table bordered>
+              <thead>
+                <tr>
+                  <th colSpan={2}>Specifications</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dimentions</td>
+                  <td>{product.dimentions}</td>
+                </tr>
+                <tr>
+                  <td>Weight</td>
+                  <td>{product.weight}</td>
+                </tr>
+                <tr>
+                  <td>Display type</td>
+                  <td>{product.displayType}</td>
+                </tr>
+                <tr>
+                  <td>Display size</td>
+                  <td>{product.displaySize}</td>
+                </tr>
+                <tr>
+                  <td>Display resolution</td>
+                  <td>{product.displayResolution}</td>
+                </tr>
+                <tr>
+                  <td>Operating system</td>
+                  <td>{product.os}</td>
+                </tr>
+                <tr>
+                  <td>CPU</td>
+                  <td>{product.cpu}</td>
+                </tr>
+                <tr>
+                  <td>Chipset</td>
+                  <td>{product.chipset}</td>
+                </tr>
+                <tr>
+                  <td>GPU</td>
+                  <td>{product.gpu}</td>
+                </tr>
+                <tr>
+                  <td>Speaker</td>
+                  <td>{product.speaker}</td>
+                </tr>
+                <tr>
+                  <td>Audio jack</td>
+                  <td>{product.audioJack}</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </StyledMain>
     </>
   );
 };
