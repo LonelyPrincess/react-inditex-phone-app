@@ -33,3 +33,8 @@ export const StyledProductListItemPrice = styled.div`
   top: 0;
   right: 0;
 `;
+
+export const StyledProductCount = styled.p`
+  margin: 1rem;
+  text-align: center;
+`;

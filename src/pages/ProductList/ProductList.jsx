@@ -18,6 +18,7 @@ import {
   StyledProductList,
   StyledProductListItem,
   StyledProductListItemPrice,
+  StyledProductCount,
 } from './ProductList.styled';
 
 const ProductList = () => {
@@ -68,10 +69,22 @@ const ProductList = () => {
           onChange={(event) => setSearchTerm(event.target.value)}
         />
       </InputGroup>
-      {searchTerm && (
-        <p>
-          {`${filteredProducts.length} out of ${productList.length} found for "${searchTerm}"`}
-        </p>
+      {!searchTerm ? (
+        <StyledProductCount>
+          {'Found a total of '}
+          <span data-cy="all-products-count">{productList.length}</span>
+          {' products'}
+        </StyledProductCount>
+      ) : (
+        <StyledProductCount>
+          &quot;
+          <i data-cy="search-term">{searchTerm}</i>
+          {'" found in '}
+          <span data-cy="search-results-count">{filteredProducts.length}</span>
+          {' out of '}
+          <span data-cy="all-products-count">{productList.length}</span>
+          {' products'}
+        </StyledProductCount>
       )}
       <StyledProductList>
         {filteredProducts.map((product) => (
