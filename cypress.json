@@ -3,5 +3,7 @@
   "integrationFolder": "cypress/integration",
   "env": {
     "API_BASE_PATH": "https://front-test-api.herokuapp.com/api"
-  }
+  },
+  "viewportWidth": 1600,
+  "viewportHeight": 1200
 }
