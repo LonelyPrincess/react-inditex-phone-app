@@ -1,6 +1,6 @@
 # Mobile eShop
 
-[![Inline docs](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app.svg?branch=master)](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app)
+![e2e tests](https://github.com/LonelyPrincess/react-inditex-phone-app/actions/workflows/cypress.yml/badge.svg) [![Inline docs](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app.svg?branch=master)](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app)
 
 This repository contains the source code for a simple application that aims to display information on different mobile phones, an application that has been developed with the [React](https://reactjs.org/) framework.
 
