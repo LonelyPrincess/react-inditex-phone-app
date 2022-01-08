@@ -21,7 +21,7 @@
   ],
   "rules": {
     "react/jsx-props-no-spreading": "off",
-    "import/prefer-default-export": "off",
+    "import/prefer-default-export": "warn",
     "no-param-reassign": [
       "error",
       {
