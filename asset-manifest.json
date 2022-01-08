@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-inditex-phone-app/static/css/main.56e6221f.css",
-    "main.js": "/react-inditex-phone-app/static/js/main.5d4ccdc1.js",
+    "main.js": "/react-inditex-phone-app/static/js/main.5e4bb798.js",
     "index.html": "/react-inditex-phone-app/index.html",
     "main.56e6221f.css.map": "/react-inditex-phone-app/static/css/main.56e6221f.css.map",
-    "main.5d4ccdc1.js.map": "/react-inditex-phone-app/static/js/main.5d4ccdc1.js.map"
+    "main.5e4bb798.js.map": "/react-inditex-phone-app/static/js/main.5e4bb798.js.map"
   },
   "entrypoints": [
     "static/css/main.56e6221f.css",
-    "static/js/main.5d4ccdc1.js"
+    "static/js/main.5e4bb798.js"
   ]
 }
