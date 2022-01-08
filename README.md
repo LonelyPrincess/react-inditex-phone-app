@@ -1,44 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Mobile eShop
 
-## Available Scripts
+This repository contains the source code for a simple application that aims to display information on different mobile phones, an application that has been developed with the [React](https://reactjs.org/) framework.
 
-In the project directory, you can run:
+This application has been created in response to a code challenge proposed by [Inditex](http://www.inditex.es/)for a front-end position, and uses an API deployed in [https://front-test-api.herokuapp.com/](Heroku) and that they've provided for its usage on this exercise.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The developed application includes the following features:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Display list of available products.
+- Include search box to filter products by name.
+- Allow viewing detailed information on each product.
+- Allow adding an item with specific settings (color and storage capacity can be chosen by the user) to the shopping cart.
+- Include number of items added to the shopping cart at all times.
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In order to run this application, the command below can be used to start the development server:
 
-### `npm run build`
+```bash
+$ npm start
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After you've done this, the web application will be available at the following address:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+http://localhost:3000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project also uses [Cypress](https://www.cypress.io/) for testing all of its features. Once the development server is running, you can run any of the following commands to run the tests:
 
-### `npm run eject`
+- Open Cypress UI to run tests on a real browser:
+```bash
+$ npm run cypress:ui
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Run tests in headless mode directly in the CLI:
+```bash
+$ npm run cypress:cli
+```
