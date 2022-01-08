@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PriceTag from '../../../../components/PriceTag/PriceTag';
 
 export const StyledProductListItem = styled.li`
-  flex-basis: 20%;
   border: 1px solid #ced4da;
   padding: 1rem;
   display: flex;

@@ -6,10 +6,15 @@ export const StyledProductList = styled.ul`
   list-style: none;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media only screen and (max-width: 1000px) {
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, max(200px, 100%/4 - .75rem));
+  }
 `;
 
 export const StyledProductListItem = styled.li`
