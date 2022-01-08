@@ -1,5 +1,7 @@
 # Mobile eShop
 
+[![Inline docs](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app.svg?branch=master)](http://inch-ci.org/github/LonelyPrincess/react-inditex-phone-app)
+
 This repository contains the source code for a simple application that aims to display information on different mobile phones, an application that has been developed with the [React](https://reactjs.org/) framework.
 
 This application has been created in response to a code challenge proposed by [Inditex](http://www.inditex.es/) for a front-end position, and uses an [API deployed in Heroku](https://front-test-api.herokuapp.com/) and that they've provided for its usage on this exercise.
