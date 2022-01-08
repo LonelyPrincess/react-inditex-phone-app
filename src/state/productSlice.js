@@ -2,7 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { requestJson } from '../utils/AjaxHelper';
 
-const apiBaseUrl = 'https://front-test-api.herokuapp.com/api';
+const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+let apiBaseUrl = 'https://front-test-api.herokuapp.com/api';
+
+// API is misconfigured and doesn't return the right CORS access headers,
+// so we will use a proxy to be able to perform the requests outside of Cypress
+if (!window.Cypress) {
+  apiBaseUrl = `${corsProxyUrl}${apiBaseUrl}`;
+}
 
 const initialState = {
   loading: false,
