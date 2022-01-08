@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open",
+    "cypress:ui": "cypress open",
+    "cypress:cli": "cypress run",
     "lint": "eslint **/*.js --ignore-pattern node_modules --fix"
   },
   "eslintConfig": {
