@@ -17,7 +17,7 @@ const initialState = {
  */
 export const fetchProductList = createAsyncThunk(
   'product/fetchProductList',
-  () => requestJson(`${apiBaseUrl}/products`),
+  () => requestJson(`${apiBaseUrl}/product`),
 );
 
 /**
@@ -26,7 +26,7 @@ export const fetchProductList = createAsyncThunk(
  */
 export const fetchProductDetails = createAsyncThunk(
   'product/fetchProductDetails',
-  (productId) => requestJson(`${apiBaseUrl}/products/${productId}`),
+  (productId) => requestJson(`${apiBaseUrl}/product/${productId}`),
 );
 
 /**

@@ -2,7 +2,7 @@ context('Product details page', () => {
   beforeEach(() => {
     cy.intercept({
       method: 'GET',
-      url: `${Cypress.env('API_BASE_PATH')}/products/q7dTIKOZuH9JA6CI_Ra6e`,
+      url: `${Cypress.env('API_BASE_PATH')}/product/q7dTIKOZuH9JA6CI_Ra6e`,
     }, {
       fixture: 'get-product-details.json',
     }).as('getProductDetailsRequest');
@@ -43,7 +43,7 @@ context('Product details page', () => {
   it('should display error message if product does not exist', () => {
     cy.intercept({
       method: 'GET',
-      url: `${Cypress.env('API_BASE_PATH')}/products/fake-product-id`,
+      url: `${Cypress.env('API_BASE_PATH')}/product/fake-product-id`,
     }, {
       statusCode: 404,
     }).as('getProductDetailsRequest');
@@ -58,7 +58,7 @@ context('Product details page', () => {
   it('should be able to return to list page', () => {
     cy.intercept({
       method: 'GET',
-      url: `${Cypress.env('API_BASE_PATH')}/products`,
+      url: `${Cypress.env('API_BASE_PATH')}/product`,
     }, {
       fixture: 'get-product-list.json',
     }).as('getProductListRequest');

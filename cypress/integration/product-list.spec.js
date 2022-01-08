@@ -4,7 +4,7 @@ context('Product list page', () => {
 
     cy.intercept({
       method: 'GET',
-      url: `${Cypress.env('API_BASE_PATH')}/products`,
+      url: `${Cypress.env('API_BASE_PATH')}/product`,
     }, {
       fixture: 'get-product-list.json',
     }).as('getProductListRequest');
@@ -34,7 +34,7 @@ context('Product list page', () => {
 
     cy.intercept({
       method: 'GET',
-      url: `${Cypress.env('API_BASE_PATH')}/products/q7dTIKOZuH9JA6CI_Ra6e`,
+      url: `${Cypress.env('API_BASE_PATH')}/product/q7dTIKOZuH9JA6CI_Ra6e`,
     }, {
       fixture: 'get-product-details.json',
     }).as('getProductDetails');
