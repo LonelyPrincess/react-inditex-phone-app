@@ -9,6 +9,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      USER_NAME: "Sara Hernández"
+      USER_EMAIL: "sara.her.su@gmail.com"
+
     steps:
 
       - name: Checkout repository
@@ -21,6 +25,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Configure Git user name
+        run: git config user.name ${{ env.USER_NAME }}
+
+      - name: Configure Git user email
+        run: git config user.email ${{ env.USER_EMAIL }}
 
       - name: Build the application bundle and deploy to GitHub pages
         run: npm run deploy
