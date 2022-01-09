@@ -32,3 +32,15 @@ const handleResponse = (res) => {
 export const requestJson = (url, options) => (
   fetch(url, { headers, ...options })
     .then(handleResponse));
+
+/**
+ *  This object defines a set of methods to perform different types of HTTP
+ * requests, acting as a shortcut to the `requestJSON` method defined above.
+ */
+export const httpRequest = {
+  get: (url) => requestJson(url),
+  post: (url, data) => requestJson(url, {
+    method: 'post',
+    body: JSON.stringify(data),
+  }),
+};
