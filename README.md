@@ -49,3 +49,22 @@ $ npm run cypress:ui
 ```bash
 $ npm run cypress:cli
 ```
+
+## Troubleshooting
+
+### I cannot see any data when running the app on a browser
+
+The API doesn't seem to be properly configured with the right response headers, which caused the following error to appear on the browser's console when running the application:
+
+```
+Access to fetch at 'xxxx' from origin 'xxxx'
+has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is
+present on the requested resource. If an opaque response serves your needs,
+set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+
+As a workaround, this project makes use of the proxy server [CORS anywhere](https://cors-anywhere.herokuapp.com/) to fix this CORS issue in requests to the API. However, as explained [here](https://github.com/Rob--W/cors-anywhere#demo-server), **the amount of requests allowed in this free demo server is limited**. Shall that limit be exceeded, you may get forbidden (403) errors as a response to any API request.
+
+In order to solve that, you'll need to manually request access to the proxy server by clicking the "Request temporary access to the demo server" button in [this page](https://cors-anywhere.herokuapp.com/corsdemo), as described [here](https://github.com/Rob--W/cors-anywhere/issues/301#issuecomment-771210498).
+
+This issue and its fix applies to both running the application locally or accessing the [version deployed in GitHub pages](https://lonelyprincess.github.io/react-inditex-phone-app).
