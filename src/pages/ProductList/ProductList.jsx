@@ -5,11 +5,11 @@ import { Breadcrumb, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 
+import { fetchProductList } from '../../state/reducers/product';
 import {
   selectLoading,
-  fetchProductList,
   selectProductList,
-} from '../../state/productSlice';
+} from '../../state/selectors/product';
 
 import Loader from '../../components/Loader/Loader';
 import ProductListItem from './components/ProductListItem/ProductListItem';

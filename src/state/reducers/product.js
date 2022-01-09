@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import * as ProductAPI from '../utils/ProductAPI';
+import * as ProductAPI from '../../utils/ProductAPI';
 
 const initialState = {
   loading: false,
@@ -78,11 +78,5 @@ export const productSlice = createSlice({
       });
   },
 });
-
-// Selector functions to read state contents
-export const selectLoading = (state) => state.product.loading;
-export const selectProductList = (state) => state.product.productList;
-export const selectProductDetails = (state) => state.product.productDetails;
-export const selectShoppingCartItemCount = (state) => state.product.shoppingCartItemCount;
 
 export default productSlice.reducer;

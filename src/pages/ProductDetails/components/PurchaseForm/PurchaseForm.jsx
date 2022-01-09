@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faFillDrip, faSdCard } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  selectLoading,
   addProductToCart as addProductToCartAction,
-} from '../../../../state/productSlice';
+} from '../../../../state/reducers/product';
+import { selectLoading } from '../../../../state/selectors/product';
 
 import {
   StyledForm,

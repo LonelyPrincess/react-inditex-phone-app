@@ -7,11 +7,11 @@ import {
 } from 'react-bootstrap';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { fetchProductDetails } from '../../state/reducers/product';
 import {
-  fetchProductDetails,
   selectLoading,
   selectProductDetails,
-} from '../../state/productSlice';
+} from '../../state/selectors/product';
 
 import Loader from '../../components/Loader/Loader';
 import PurchaseForm from './components/PurchaseForm/PurchaseForm';

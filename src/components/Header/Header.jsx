@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import { selectShoppingCartItemCount } from '../../state/productSlice';
+import { selectShoppingCartItemCount } from '../../state/selectors/product';
 
 import {
   StyledHeader,
