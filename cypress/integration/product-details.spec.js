@@ -24,6 +24,8 @@ context('Product details page', () => {
     cy.get('[data-cy=product-name]').should('have.text', 'Acer Allegro');
     cy.get('[data-cy=price-tag]').should('have.text', '140 €');
 
+    cy.get('[data-cy=product-color-selector]').select('1001');
+
     cy.get('[data-cy=shopping-cart-item-count]').should('have.text', 0);
     cy.get('[data-cy=add-to-shopping-cart-button]').click();
     cy.get('[data-cy=add-to-shopping-cart-button]').should('be.disabled');
@@ -31,7 +33,7 @@ context('Product details page', () => {
     cy.wait('@addProductToCartRequest').then(({ request }) => {
       expect(request.body).to.eql({
         id: 'q7dTIKOZuH9JA6CI_Ra6e',
-        colorCode: 1000,
+        colorCode: 1001,
         storageCode: 2000,
       });
     });

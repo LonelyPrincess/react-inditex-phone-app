@@ -52,7 +52,7 @@ const PurchaseForm = ({ product }) => {
                 <InputGroup.Text>
                   <FontAwesomeIcon fixedWidth icon={faFillDrip} />
                 </InputGroup.Text>
-                <Form.Select {...field}>
+                <Form.Select data-cy="product-color-selector" {...field}>
                   {product.options.colors.map((color) => (
                     <option key={color.code} value={color.code}>{color.name}</option>
                   ))}
@@ -69,7 +69,7 @@ const PurchaseForm = ({ product }) => {
                 <InputGroup.Text>
                   <FontAwesomeIcon fixedWidth icon={faSdCard} />
                 </InputGroup.Text>
-                <Form.Select {...field}>
+                <Form.Select data-cy="product-storage-selector" {...field}>
                   {product.options.storages.map((storage) => (
                     <option key={storage.code} value={storage.code}>{storage.name}</option>
                   ))}
