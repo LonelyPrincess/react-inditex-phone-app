@@ -12,7 +12,7 @@ const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
  * proxy server URL before the real API base path in case we're outside the
  * test environment.
  *
- * @returns {string} Base path for the API requests
+ * @returns {string} Base path for the API requests.
  */
 const getApiBaseUrl = () => {
   if (!window.Cypress) {
@@ -35,6 +35,7 @@ export const fetchProductList = () => (
  *  Trigger HTTP request to obtain detailed information on the selected
  * product.
  *
+ * @param {string} productId - Id of the product to fetch.
  * @returns {Promise} Promise object with information on a product.
  */
 export const fetchProductDetails = (productId) => (
@@ -44,6 +45,9 @@ export const fetchProductDetails = (productId) => (
 /**
  * Trigger HTTP request to add an item to the shopping cart.
  *
+ * @param {string} productId - Id of the product to add to the cart.
+ * @param {number} colorCode - Code identifying the desired color.
+ * @param {number} storageCode - Code identifying the desired storage capacity.
  * @returns {Promise} Promise object with number of items in cart.
  */
 export const addProductToCart = ({ productId, colorCode, storageCode }) => (
