@@ -29,7 +29,7 @@ const handleResponse = (res) => {
  *  include the request method or the data to send along with it.
  * @returns {Promise} Promise object with server's response in json format.
  */
-export const requestJson = (url, options) => (
+const requestJson = (url, options) => (
   fetch(url, { headers, ...options })
     .then(handleResponse));
 

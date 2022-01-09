@@ -1,15 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { requestJson } from '../utils/AjaxHelper';
-
-const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
-let apiBaseUrl = 'https://front-test-api.herokuapp.com/api';
-
-// API is misconfigured and doesn't return the right CORS access headers,
-// so we will use a proxy to be able to perform the requests outside of Cypress
-if (!window.Cypress) {
-  apiBaseUrl = `${corsProxyUrl}${apiBaseUrl}`;
-}
+import * as ProductAPI from '../utils/ProductAPI';
 
 const initialState = {
   loading: false,
@@ -24,7 +15,7 @@ const initialState = {
  */
 export const fetchProductList = createAsyncThunk(
   'product/fetchProductList',
-  () => requestJson(`${apiBaseUrl}/product`),
+  () => ProductAPI.fetchProductList(),
 );
 
 /**
@@ -33,7 +24,7 @@ export const fetchProductList = createAsyncThunk(
  */
 export const fetchProductDetails = createAsyncThunk(
   'product/fetchProductDetails',
-  (productId) => requestJson(`${apiBaseUrl}/product/${productId}`),
+  (productId) => ProductAPI.fetchProductDetails(productId),
 );
 
 /**
@@ -42,14 +33,9 @@ export const fetchProductDetails = createAsyncThunk(
  */
 export const addProductToCart = createAsyncThunk(
   'product/addProductToCart',
-  ({ productId, colorCode, storageCode }) => requestJson(`${apiBaseUrl}/cart`, {
-    method: 'post',
-    body: JSON.stringify({
-      id: productId,
-      colorCode,
-      storageCode,
-    }),
-  }),
+  ({ productId, colorCode, storageCode }) => (
+    ProductAPI.addProductToCart({ productId, colorCode, storageCode })
+  ),
 );
 
 export const productSlice = createSlice({
