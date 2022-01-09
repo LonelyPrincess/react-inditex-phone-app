@@ -5,7 +5,9 @@ import { Breadcrumb, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { fetchProductList } from '../../state/reducers/product';
+import {
+  fetchProductList,
+} from '../../state/actions/product';
 import {
   selectLoading,
   selectProductList,

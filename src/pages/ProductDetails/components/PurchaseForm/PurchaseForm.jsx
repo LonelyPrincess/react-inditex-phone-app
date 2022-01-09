@@ -9,7 +9,7 @@ import { faCartPlus, faFillDrip, faSdCard } from '@fortawesome/free-solid-svg-ic
 
 import {
   addProductToCart as addProductToCartAction,
-} from '../../../../state/reducers/product';
+} from '../../../../state/actions/product';
 import { selectLoading } from '../../../../state/selectors/product';
 
 import {

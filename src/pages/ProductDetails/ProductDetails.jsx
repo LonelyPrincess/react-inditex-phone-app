@@ -7,7 +7,9 @@ import {
 } from 'react-bootstrap';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { fetchProductDetails } from '../../state/reducers/product';
+import {
+  fetchProductDetails,
+} from '../../state/actions/product';
 import {
   selectLoading,
   selectProductDetails,
